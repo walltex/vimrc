@@ -51,11 +51,19 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 " Syntax highlighting and indenting for JSX
 Plugin 'mxw/vim-jsx'
 
+"--------------------------------------------------
+" @see Microsoft/TypeScript
+
 " Syntax file for TypeScript libraries
 " provides syntax files for highlighting .ts and .d.ts files.
 Plugin 'leafgarland/typescript-vim'
+
 " provides more syntax highlighting and DOM keywords.
 " Plugin 'HerringtonDarkholme/yats.vim'
+
+" TypeScript Language Service Tool
+Plugin 'Quramy/tsuquyomi'
+
 
 "--------------------------------------------------
 " PHP
