@@ -10,17 +10,66 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+"--------------------------------------------------
+" THEME
+"--------------------------------------------------
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'Lokaltog/vim-powerline'
+
+"--------------------------------------------------
+" SNIPPETS
+"--------------------------------------------------
+" The ultimate snippet solution for Vim
 Plugin 'SirVer/ultisnips'
+" vim-snipmate default snippets (Previously snipmate-snippets)
 Plugin 'honza/vim-snippets'
 
-Plugin 'tobyS/pdv'
-Plugin 'tobyS/vmustache'
+"Mustache template system for VIMScript
+"Plugin 'tobyS/vmustache'
 
-Plugin 'Lokaltog/vim-powerline'
-Plugin 'altercation/vim-colors-solarized'
+"--------------------------------------------------
+" JavaScript
+"--------------------------------------------------
+" Overwrides too much of solarized theme
+"Plugin 'pangloss/vim-javascript'
 
+" Standalone JSDoc syntax.
+Plugin 'othree/jsdoc-syntax.vim'
+
+" Yet Another JavaScript Syntax file for Vim
+Plugin 'othree/yajs.vim'
+
+" JavaScript Parameter Complete(JSPC) is a completion function for function parameters, such as event names, crypto algorithms, and common locales.
+Plugin 'othree/jspc.vim'
+
+" Syntax file for JavaScript libraries.
+Plugin 'othree/javascript-libraries-syntax.vim'
+
+" es.next.syntax.vim breks completion for native JS functions
+"Plugin 'othree/es.next.syntax.vim'
+
+" Syntax highlighting and indenting for JSX
+Plugin 'mxw/vim-jsx'
+
+" Syntax file for TypeScript libraries
+" provides syntax files for highlighting .ts and .d.ts files.
+Plugin 'leafgarland/typescript-vim'
+" provides more syntax highlighting and DOM keywords.
+" Plugin 'HerringtonDarkholme/yats.vim'
+
+"--------------------------------------------------
+" PHP
+"--------------------------------------------------
+"PHP Documentor for VIM - Generates PHP docblocks
+"Plugin 'tobyS/pdv'
+
+"Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
+"Plugin 'joonty/vdebug'
+
+"--------------------------------------------------
+" Misc
+"--------------------------------------------------
 Plugin 'scrooloose/nerdtree'
-Plugin 'joonty/vdebug'
 Plugin 'majutsushi/tagbar'
 Plugin 'sickill/vim-pasta'
 Plugin 'jakobwesthoff/whitespacetrail'
@@ -30,6 +79,7 @@ Plugin 'Lokaltog/vim-easymotion'
 
 Plugin 'Valloric/YouCompleteMe'
 
+Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,9 +131,9 @@ let php_htmlInStrings=1
 "--------------------------------------------------
 " PDV (phpDocumentor for VIM)
 "
-let g:pdv_template_dir = "/home/txc/.vim/templates"
-nnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
-vnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
+"let g:pdv_template_dir = "/home/txc/.vim/templates"
+"nnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
+"vnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
 
 "--------------------------------------------------
 " VIM-COLORS-SOLARIZED
@@ -93,7 +143,7 @@ let g:solarized_termcolors=256
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 "set t_Co=256
-set t_Co=128
+"set t_Co=64
 colorscheme solarized
 set background=dark
 
@@ -124,6 +174,15 @@ nmap <S-F8> :TagbarToggle<CR>
 "let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 "let g:SuperTabDefaultCompletionType = '<C-n>'
 
+let g:ycm_add_preview_to_completeopt=0
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+
+" TypeScript completion for YouCompleteMe
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
 
 "--------------------------------------------------
 " UltiSnips
@@ -137,3 +196,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+
+"--------------------------------------------------
+" VIM-JSX
+" If you use JSX syntax in .js files, which is now becoming standard
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
