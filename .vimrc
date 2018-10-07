@@ -1,6 +1,27 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+
+"--------------------------------------------------
+" STRUCTURE
+" Idea is to put plugin list right after Vundle
+" separating plugin configuration into its own block.
+" That allow you to focus on plugin list,
+" categorize it and so on on the one hand.
+" And you will be able to configure plugin separately
+" on the other hand.
+"
+"
+" TAGS
+" You can type something like #someones_plugin
+" near plugin and its configuration.
+" It allows you to jump between those parts easily.
+"--------------------------------------------------
+
+
+"--------------------------------------------------
+" Vundle
+"--------------------------------------------------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,22 +31,27 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
+
 "--------------------------------------------------
 " THEME
 "--------------------------------------------------
+" #altercation_vim_colors_solarized
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Lokaltog/vim-powerline'
+
 
 "--------------------------------------------------
 " SNIPPETS
 "--------------------------------------------------
 " The ultimate snippet solution for Vim
+" #sirver_ultisnips
 Plugin 'SirVer/ultisnips'
 " vim-snipmate default snippets (Previously snipmate-snippets)
 Plugin 'honza/vim-snippets'
 
 "Mustache template system for VIMScript
 "Plugin 'tobyS/vmustache'
+
 
 "--------------------------------------------------
 " JavaScript
@@ -35,6 +61,7 @@ Plugin 'honza/vim-snippets'
 
 " Standalone JSDoc syntax.
 Plugin 'othree/jsdoc-syntax.vim'
+" Plugin ' heavenshell/vim-jsdoc'
 
 " Yet Another JavaScript Syntax file for Vim
 Plugin 'othree/yajs.vim'
@@ -49,13 +76,17 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 "Plugin 'othree/es.next.syntax.vim'
 
 " Syntax highlighting and indenting for JSX
+" #mxw_vim_jsx
 Plugin 'mxw/vim-jsx'
 
+
 "--------------------------------------------------
-" @see Microsoft/TypeScript
+" Microsoft/TypeScript
+"--------------------------------------------------
 
 " Syntax file for TypeScript libraries
 " provides syntax files for highlighting .ts and .d.ts files.
+" #leafgarland_typescript_vim
 Plugin 'leafgarland/typescript-vim'
 
 " provides more syntax highlighting and DOM keywords.
@@ -74,9 +105,11 @@ Plugin 'Quramy/tsuquyomi'
 "Multi-language DBGP debugger client for Vim (PHP, Python, Perl, Ruby, etc.)
 "Plugin 'joonty/vdebug'
 
+
 "--------------------------------------------------
 " Misc
 "--------------------------------------------------
+" #scrooloose_nerdtree
 Plugin 'scrooloose/nerdtree'
 Plugin 'majutsushi/tagbar'
 Plugin 'sickill/vim-pasta'
@@ -85,9 +118,11 @@ Plugin 'danro/rename.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'Lokaltog/vim-easymotion'
 
+" #valloric_youcompleteme
 Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'tpope/vim-fugitive'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -132,9 +167,11 @@ let php_sql_query=1
 let php_htmlInStrings=1
 
 
+
 "--------------------------------------------------
 " Plugin configs
 "--------------------------------------------------
+
 
 "--------------------------------------------------
 " PDV (phpDocumentor for VIM)
@@ -143,9 +180,9 @@ let php_htmlInStrings=1
 "nnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
 "vnoremap <C-K> :call pdv#DocumentCurrentLine()<CR>
 
+
 "--------------------------------------------------
-" VIM-COLORS-SOLARIZED
-"
+" #altercation_vim_colors_solarized
 syntax enable
 let g:solarized_termcolors=256
 let g:solarized_visibility = "high"
@@ -155,9 +192,9 @@ let g:solarized_contrast = "high"
 colorscheme solarized
 set background=dark
 
+
 "--------------------------------------------------
-" NERDTree
-"
+" #scrooloose_nerdtree
 "Shift+F5, etc.
 nmap <S-F5> :NERDTreeToggle<CR>
 "nmap <S-F5> :NERDTree<CR>
@@ -174,8 +211,11 @@ nmap <S-F8> :TagbarToggle<CR>
 
 
 "--------------------------------------------------
-" YouCompleteMe
-"
+" #valloric_youcompleteme
+" In case of issues with following substring 'The ycmd server SHUT DOWN'
+" please do followign commands:
+" # cd ~/.vim/bundle/YouCompleteMe
+" # ./install.py
 
 " make YCM compatible with UltiSnips (using supertab)
 "let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -192,22 +232,28 @@ if !exists("g:ycm_semantic_triggers")
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 
+
 "--------------------------------------------------
-" UltiSnips
+" #sirver_ultisnips
 "
 " Trigger configuration. Do not use <tab> if you use
 " https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-s-e>"
+let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 
 "--------------------------------------------------
-" VIM-JSX
+" #mxw_vim_jsx
 " If you use JSX syntax in .js files, which is now becoming standard
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
+
+"--------------------------------------------------
+" #leafgarland_typescript_vim
+"let g:typescript_indent_disable = 1
+":make
