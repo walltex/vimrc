@@ -1,3 +1,8 @@
+" File              : .vimrc
+" Author: Yevhen Zhurakhovskyi <eugene.zhurakhovskiy@ab-soft.net>
+" Date  : 28.09.2020
+" Last Modified Date  : 28.09.2020 15:48:52
+" Last Modified By: Yevhen Zhurakhovskyi <eugene.zhurakhovskiy@ab-soft.net>
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -32,6 +37,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
+" :call fzf#run({'sink': 'e'})
+
 "--------------------------------------------------
 " THEME
 "--------------------------------------------------
@@ -52,10 +61,12 @@ Plugin 'honza/vim-snippets'
 "Mustache template system for VIMScript
 "Plugin 'tobyS/vmustache'
 
-
 "--------------------------------------------------
 " JavaScript
 "--------------------------------------------------
+" :JsDoc
+Plugin 'heavenshell/vim-jsdoc'
+
 " Overwrides too much of solarized theme
 "Plugin 'pangloss/vim-javascript'
 
@@ -82,7 +93,7 @@ Plugin 'mxw/vim-jsx'
 
 "--------------------------------------------------
 " Microsoft/TypeScript
-"--------------------------------------------------
+"--
 
 " Syntax file for TypeScript libraries
 " provides syntax files for highlighting .ts and .d.ts files.
@@ -93,12 +104,19 @@ Plugin 'leafgarland/typescript-vim'
 " Plugin 'HerringtonDarkholme/yats.vim'
 
 " TypeScript Language Service Tool
+" #quramy_tsuquyomi
 Plugin 'Quramy/tsuquyomi'
 
 
 "--------------------------------------------------
-" PHP
+" Code Formatting
+"--
+Plugin 'prettier/vim-prettier'
+
+
 "--------------------------------------------------
+" PHP
+"--
 "PHP Documentor for VIM - Generates PHP docblocks
 "Plugin 'tobyS/pdv'
 
@@ -119,9 +137,16 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Lokaltog/vim-easymotion'
 
 " #valloric_youcompleteme
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+" #neoclide_coc
+Plugin 'neoclide/coc.nvim'
 
+" Git
+" :Gblame
+" :Gstatus
 Plugin 'tpope/vim-fugitive'
+
+Plugin 'mattn/webapi-vim'
 
 
 " All of your Plugins must be added before the following line
@@ -245,12 +270,30 @@ let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'txc-snippets']
 
 
 "--------------------------------------------------
 " #mxw_vim_jsx
 " If you use JSX syntax in .js files, which is now becoming standard
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+
+"--------------------------------------------------
+" #quramy_tsuquyomi
+"let g:tsuquyomi_disable_quickfix = 1
+
+"--------------------------------------------------
+" #neoclide_coc
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=900
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+"--------------------------------------------------
+" :JsDocFormat for entire file
+nmap <silent> <C-l> <Plug>(jsdoc)
 
 
 "--------------------------------------------------
